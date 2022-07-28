@@ -48,7 +48,7 @@ export default function SingleListPage({data}) {
 
 export async function getServerSideProps(context){ 
   const session = await getSession(context)
-  const res = await fetch(`http://localhost:3000/api/lists/${context.query.slug}`)
+  const res = await fetch(`https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/lists/${context.query.slug}`)
   const data = await res.json()
   return{
     props: {
