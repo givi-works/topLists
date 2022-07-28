@@ -31,7 +31,7 @@ export default function ListsPage({data}) {
     )
 }
 
-export async function getStaticProps(){ 
+export async function getServerSideProps(context){ 
     const res = await axios.get(`https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/lists`)
     const data = await res.json()
     return{
