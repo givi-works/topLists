@@ -20,9 +20,9 @@ export default function SingleListPage({data}) {
 
   const handleVote = async (name) => { 
     try {
-      await axios.put(`http://localhost:3000/api/lists/${router.query.slug}`, { name, email })
+      await axios.put(`https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/lists/${router.query.slug}`, { name, email })
       console.log("done")
-      const newData = await axios.get(`http://localhost:3000/api/lists/${router.query.slug}`)
+      const newData = await axios.get(`https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/lists/${router.query.slug}`)
       setItems(newData.data.items)
     } catch (error) {
       toast.error("You have already liked this one")
