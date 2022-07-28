@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import ItemCard from "../../components/ItemCard";
 import Layout from "../../components/Layout";
-import axios from 'axios'
 
 export default function ListsPage({data}) {
     const firstPage = data.slice(0,5)
@@ -32,7 +31,7 @@ export default function ListsPage({data}) {
 }
 
 export async function getServerSideProps(context){ 
-    const res = await axios.get(`https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/lists`)
+    const res = await fetch(`https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/lists`)
     const data = await res.json()
     return{
         props: {data}
