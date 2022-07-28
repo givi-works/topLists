@@ -32,7 +32,7 @@ export default function ListsPage({data}) {
 }
 
 export async function getStaticProps(){ 
-    const res = await fetch(`/${process.env.VERCEL_URL}/api/lists`)
+    const res = await fetch(`${process.env.VERCEL_URL}/api/lists`)
     const data = await res.json()
     return{
         props: {data}
