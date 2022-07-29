@@ -7,12 +7,6 @@ const handler = nc().post(async(req, res) => {
     await openConnection()
     const { email, username, password } = req.body
     try {
-        const checkEmailAvailability = await User.findOne({ email })
-        if(checkEmailAvailability){
-            res.status(422).json({ message: "email already exists" })
-            await closeConnection()
-            return
-        }
         const hashedPassword = await hashPassword(password)
         const newUser = new User({ email, username, password: hashedPassword })
         await newUser.save()
