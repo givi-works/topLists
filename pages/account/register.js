@@ -22,7 +22,7 @@ export default function RegisterPage() {
       return
     }
     try {
-      await axios.post("http://localhost:3000/api/auth/signup", {
+      await axios.post(`https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/auth/signup`, {
         email: email.current.value,
         username: username.current.value, 
         password: password.current.value
